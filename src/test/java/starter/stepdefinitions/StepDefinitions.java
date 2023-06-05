@@ -25,26 +25,22 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.emptyString;
 
-public class AltaShopAPISDBDD {
-    String baseUrl = "https://altashop-api.fly.dev";
+public class StepDefinitions {
+    String baseUrl = "178.128.210.192:8080";
     User user = new User();
 
     @Given("{actor} call an api {string} with method {string} with payload below")
     public void callApi(Actor actor, String path, String method, DataTable table)  {
         actor.whoCan(CallAnApi.at(baseUrl));
 
-        // Create request body json instance
         JSONObject bodyRequest = new JSONObject();
 
-        // Get headers
         List<List<String>> rowsList = table.asLists(String.class);
         List<String> headerList = rowsList.get(0);
 
-        // Get values
         List<Map<String, String>> rowsMap = table.asMaps(String.class, String.class);
         Map<String, String> valueList = rowsMap.get(0);
 
-        // Loop on every values Then set value with key from header to request body
         for (int i = 0; i < valueList.size(); i++) {
             String key = headerList.get(i);
             bodyRequest.put(key, valueList.get(key));
@@ -127,18 +123,14 @@ public class AltaShopAPISDBDD {
 
         JSONArray jsonArrayWrapper = new JSONArray();
 
-        // Create request body json instance
         JSONObject bodyRequest = new JSONObject();
 
-        // Get headers
         List<List<String>> rowsList = table.asLists(String.class);
         List<String> headerList = rowsList.get(0);
 
-        // Get values
         List<Map<String, String>> rowsMap = table.asMaps(String.class, String.class);
         Map<String, String> valueList = rowsMap.get(0);
 
-        // Loop on every values Then set value with key from header to request body
         for (int i = 0; i < valueList.size(); i++) {
             String key = headerList.get(i);
             bodyRequest.put(key, valueList.get(key));

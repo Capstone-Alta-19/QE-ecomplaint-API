@@ -6,7 +6,6 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
       Then User verify status code is 200
       Then User verify "data" is exist
 
@@ -15,7 +14,6 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | salah    |
-      And user get token
       Then User verify status code is 400
       Then User verify response body should contain "email or password is invalid"
 
@@ -24,7 +22,6 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | salah    | admin123 |
-      And user get token
       Then User verify status code is 400
       Then User verify response body should contain "email or password is invalid"
 
@@ -33,7 +30,6 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    |          |
-      And user get token
       Then User verify status code is 400
       Then User verify response body should contain "email or password is invalid"
 
