@@ -1,4 +1,4 @@
-@authenticationAdmin
+@AuthenticationAdmin
   Feature: Check admin authentication
 
     @Admin @Authentication @Login @Positive

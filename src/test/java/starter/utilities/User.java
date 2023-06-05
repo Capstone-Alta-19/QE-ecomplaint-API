@@ -1,6 +1,9 @@
 package starter.utilities;
 
 public class User {
+    String email = "email@example.com";
+    String password = "password";
+    String token;
 
     public String getToken() {
         return token;
@@ -10,7 +13,19 @@ public class User {
         this.token = token;
     }
 
-    String token;
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
-
