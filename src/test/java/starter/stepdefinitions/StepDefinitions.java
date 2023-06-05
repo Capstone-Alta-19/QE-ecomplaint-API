@@ -26,7 +26,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.emptyString;
 
 public class StepDefinitions {
-    String baseUrl = "178.128.210.192:8080";
+    String baseUrl = "http://178.128.210.192:8080";
     User user = new User();
 
     @Given("{actor} call an api {string} with method {string} with payload below")
