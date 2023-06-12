@@ -3,7 +3,7 @@
 
     @Admin @AddAdmin @Positive
       Scenario: User can add admin with valid data
-      Given user call an api "/admin" with method "POST" with payload below
+      Given User call an api "/admin" with method "POST" with payload below
         | name | role         | username | password |
         | eka  | admin berita | admin    | admin123 |
       Then User verify status code is 200
