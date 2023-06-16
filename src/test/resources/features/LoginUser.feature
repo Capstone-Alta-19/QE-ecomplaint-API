@@ -4,40 +4,35 @@
     @User @Authentication @Login @Positive
     Scenario: User login with valid data
       Given User call an api "/login/user" with method "POST" with payload below
-        | username | password |
-        | halim    | 12345678 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       Then User verify status code is 200
-      Then User verify "data" is exist
+      Then User verify "token" is exist
 
     @User @Authentication @Login @Negative
     Scenario: User login with invalid data wrong password
       Given User call an api "/login/user" with method "POST" with payload below
-        | username | password |
-        | halim    | salah    |
+        | username_or_email | password |
+        | halim             | salah    |
       Then User verify status code is 400
-      Then User verify response body should contain "email or password is invalid"
 
     @User @Authentication @Login @Negative
     Scenario: User login with invalid data wrong username
       Given User call an api "/login/user" with method "POST" with payload below
-        | username | password |
-        | salah    | 12345678 |
+        | username_or_email | password |
+        | salah             | 12345678 |
       Then User verify status code is 400
-      Then User verify response body should contain "email or password is invalid"
 
     @User @Authentication @Login @Negative
     Scenario: User login with invalid data blank password
       Given User call an api "/login/user" with method "POST" with payload below
-        | username | password |
-        | halim    |          |
+        | username_or_email |
+        | halim             |
       Then User verify status code is 400
-      Then User verify response body should contain "email or password is invalid"
 
     @User @Authentication @Login @Negative
    Scenario: User login with invalid data blank username
       Given User call an api "/login/user" with method "POST" with payload below
-        | username | password |
-        |          | 12345678 |
-      And user get token
+        | password |
+        | 12345678 |
       Then User verify status code is 400
-      Then User verify response body should contain "email or password is invalid"

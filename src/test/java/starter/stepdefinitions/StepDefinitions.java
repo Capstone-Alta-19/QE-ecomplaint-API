@@ -13,6 +13,7 @@ import net.serenitybdd.screenplay.rest.interactions.Delete;
 import net.serenitybdd.screenplay.rest.interactions.Get;
 import net.serenitybdd.screenplay.rest.interactions.Post;
 import net.serenitybdd.screenplay.rest.interactions.Put;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import starter.utilities.User;
 
@@ -30,7 +31,7 @@ public class StepDefinitions {
     User user = new User();
 
     @Given("{actor} call an api {string} with method {string} with payload below")
-    public void callApi(Actor actor, String path, String method, DataTable table)  {
+    public void callApi(Actor actor, String path, String method, DataTable table) {
         actor.whoCan(CallAnApi.at(baseUrl));
 
         JSONObject bodyRequest = new JSONObject();
@@ -46,8 +47,6 @@ public class StepDefinitions {
 
             String key = headerList.get(i);
 
-            bodyRequest.put(key, valueList.get(key));
-
             switch (valueList.get(key)) {
                 case "randomEmail" -> {
                     String randomEmail = faker.internet().emailAddress();
@@ -59,6 +58,19 @@ public class StepDefinitions {
                     bodyRequest.put(key, randomPassword);
                     user.setPassword(randomPassword);
                 }
+                case "randomFullname" -> bodyRequest.put(key, faker.name().fullName());
+                case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
+                case "randomNewsName" -> bodyRequest.put(key, faker.lorem().words());
+                case "randomCategoryID" -> bodyRequest.put(key, faker.number().digits(2));
+                case "randomNewsDescription" -> bodyRequest.put(key, faker.lorem().paragraphs(3));
+                case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence());
+                case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
+                case "randomProductId" -> bodyRequest.put(key, 14394);
+                case "randomQuantity" -> bodyRequest.put(key, faker.number().randomDigitNotZero());
+                case "randomRating" -> bodyRequest.put(key, faker.number().numberBetween(1, 5));
+                case "userEmail" -> bodyRequest.put(key, user.getEmail());
+                case "userPassword" -> bodyRequest.put(key, user.getPassword());
+                default -> bodyRequest.put(key, valueList.get(key));
             }
         }
 
@@ -98,9 +110,10 @@ public class StepDefinitions {
     @And("{actor} get token")
     public void userGetToken(Actor actor) {
         Response response = SerenityRest.lastResponse();
-        user.setToken(response.path("data"));
+        user.setToken(response.path("token"));
     }
-    @Given("{actor} call an API {string} with method {string} with payload below and specific token")
+
+    @And("{actor} call an api {string} with method {string} with payload below and specific token")
     public void userCallAnAPIWithMethodWithPayloadBelowAndSpecificToken(Actor actor, String path, String method, DataTable table) {
         actor.whoCan(CallAnApi.at(baseUrl));
 
@@ -130,6 +143,9 @@ public class StepDefinitions {
                 }
                 case "randomFullname" -> bodyRequest.put(key, faker.name().fullName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
+                case "randomNewsName" -> bodyRequest.put(key, faker.lorem().words());
+                case "randomCategoryID" -> bodyRequest.put(key, faker.number().digits(2));
+                case "randomNewsDescription" -> bodyRequest.put(key, faker.lorem().paragraphs(3));
                 case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence());
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
                 case "randomProductId" -> bodyRequest.put(key, 14394);
@@ -139,6 +155,21 @@ public class StepDefinitions {
                 case "userPassword" -> bodyRequest.put(key, user.getPassword());
                 default -> bodyRequest.put(key, valueList.get(key));
             }
+        }
+        JSONArray arrayRequest = new JSONArray();
+        arrayRequest.add(bodyRequest);
+
+        switch (method) {
+            case "GET" -> actor.attemptsTo(Get.resource(path));
+            case "POST" -> actor.attemptsTo(Post.to(path)
+                    .with(request -> request.header("Authorization", "Bearer " + user.getToken())
+                            .body(bodyRequest).log().all()));
+            case "POSTarray" -> actor.attemptsTo(Post.to(path)
+                    .with(request -> request.header("Authorization", "Bearer " + user.getToken())
+                            .body(arrayRequest).log().all()));
+            case "PUT" -> actor.attemptsTo(Put.to(path).with(request -> request.body(bodyRequest)));
+            case "DELETE" -> actor.attemptsTo(Delete.from(path));
+            default -> throw new IllegalStateException("Unknown method");
         }
     }
 }

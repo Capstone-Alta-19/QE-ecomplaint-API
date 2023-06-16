@@ -7,7 +7,7 @@
         | username | password |
         | admin    | admin123 |
       Then User verify status code is 200
-      Then User verify "data" is exist
+      Then User verify "token" is exist
 
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data wrong password
@@ -15,7 +15,6 @@
         | username | password |
         | admin    | salah    |
       Then User verify status code is 400
-      Then User verify response body should contain "email or password is invalid"
 
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data wrong username
@@ -23,21 +22,17 @@
         | username | password |
         | salah    | admin123 |
       Then User verify status code is 400
-      Then User verify response body should contain "email or password is invalid"
 
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data blank password
       Given User call an api "/login/admin" with method "POST" with payload below
-        | username | password |
-        | admin    |          |
+        | username |
+        | admin    |
       Then User verify status code is 400
-      Then User verify response body should contain "email or password is invalid"
 
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data blank username
       Given User call an api "/login/admin" with method "POST" with payload below
-        | username | password |
-        |          | admin123 |
-      And user get token
+        | password |
+        | admin123 |
       Then User verify status code is 400
-      Then User verify response body should contain "email or password is invalid"

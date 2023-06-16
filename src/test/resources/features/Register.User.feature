@@ -7,6 +7,7 @@
         | username | email               | phone       | password | confirm_password |
         | halim    | faiz.hali@gmail.com | 01234567890 | 12345678 | 12345678         |
       Then User verify status code is 200
+      Then User verify response is match with json schema "newUser.json"
 
     @User @Authentication @Register @Negative
     Scenario: User login with invalid data blank username
