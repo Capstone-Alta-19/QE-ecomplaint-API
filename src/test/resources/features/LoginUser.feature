@@ -12,9 +12,10 @@
     @User @Authentication @Login @Negative
     Scenario: User login with invalid data wrong password
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password |
-        | halim             | salah    |
+        | username_or_email | password  |
+        | halim             | salahpass |
       Then User verify status code is 400
+      Then User verify response body should contain "wrong password"
 
     @User @Authentication @Login @Negative
     Scenario: User login with invalid data wrong username
@@ -22,6 +23,7 @@
         | username_or_email | password |
         | salah             | 12345678 |
       Then User verify status code is 400
+      Then User verify response body should contain "username or email not found"
 
     @User @Authentication @Login @Negative
     Scenario: User login with invalid data blank password

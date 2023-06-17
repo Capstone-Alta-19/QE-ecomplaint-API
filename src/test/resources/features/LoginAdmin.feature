@@ -12,9 +12,10 @@
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data wrong password
       Given User call an api "/login/admin" with method "POST" with payload below
-        | username | password |
-        | admin    | salah    |
+        | username | password  |
+        | admin    | salahpass |
       Then User verify status code is 400
+      Then User verify response body should contain "wrong password"
 
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data wrong username
@@ -22,6 +23,7 @@
         | username | password |
         | salah    | admin123 |
       Then User verify status code is 400
+      Then User verify response body should contain "username not found"
 
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data blank password
@@ -29,6 +31,7 @@
         | username |
         | admin    |
       Then User verify status code is 400
+      Then User verify response body should contain "Password is required"
 
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data blank username
@@ -36,3 +39,4 @@
         | password |
         | admin123 |
       Then User verify status code is 400
+      Then User verify response body should contain "Username is required"
