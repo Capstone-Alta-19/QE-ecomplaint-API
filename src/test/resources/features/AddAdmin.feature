@@ -14,7 +14,7 @@
       Then User verify response body should contain "Success Added Admin"
 
     @Admin @Authentication @Add @Negative
-    Scenario: user add admin with blank name
+    Scenario: User add admin with blank name
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
@@ -26,7 +26,7 @@
       Then User verify response body should contain "Name is required"
 
     @Admin @Authentication @Add @Negative
-    Scenario: user add admin with blank role
+    Scenario: User add admin with blank role
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
@@ -38,7 +38,7 @@
       Then User verify response body should contain "Role is required"
 
     @Admin @Authentication @Add @Negative
-    Scenario: user add admin with blank username
+    Scenario: User add admin with blank username
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
@@ -50,7 +50,7 @@
       Then User verify response body should contain "Username is required"
 
     @Admin @Authentication @Add @Negative
-    Scenario: user add admin with blank password
+    Scenario: User add admin with blank password
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
@@ -62,7 +62,7 @@
       Then User verify response body should contain "Password is required"
 
     @Admin @Authentication @Add @Negative
-    Scenario: user add admin with blank password
+    Scenario: User add admin with taken username
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
