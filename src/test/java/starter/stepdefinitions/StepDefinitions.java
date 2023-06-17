@@ -59,6 +59,7 @@ public class StepDefinitions {
                     user.setPassword(randomPassword);
                 }
                 case "randomFullname" -> bodyRequest.put(key, faker.name().fullName());
+                case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
                 case "randomNewsName" -> bodyRequest.put(key, faker.lorem().words());
                 case "randomCategoryID" -> bodyRequest.put(key, faker.number().digits(2));
@@ -110,7 +111,7 @@ public class StepDefinitions {
     @And("{actor} get token")
     public void userGetToken(Actor actor) {
         Response response = SerenityRest.lastResponse();
-        user.setToken(response.path("token"));
+        user.setToken(response.path("admin.token"));
     }
 
     @And("{actor} call an api {string} with method {string} with payload below and specific token")
@@ -142,6 +143,7 @@ public class StepDefinitions {
                     user.setPassword(randomPassword);
                 }
                 case "randomFullname" -> bodyRequest.put(key, faker.name().fullName());
+                case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
                 case "randomNewsName" -> bodyRequest.put(key, faker.lorem().words());
                 case "randomCategoryID" -> bodyRequest.put(key, faker.number().digits(2));

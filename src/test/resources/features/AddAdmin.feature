@@ -8,10 +8,10 @@
         | admin    | admin123 |
       And user get token
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
-        | name | role         | username | password |
-        | eka  | admin berita | admin    | admin123 |
+        | name       | role  | username   | password       |
+        | randomName | Admin | randomName | randomPassword |
       Then User verify status code is 200
-      Then User verify response is match with json schema "newAdmin.json"
+      Then User verify response body should contain "Success Added Admin"
 
     @Admin @Authentication @Add @Negative
     Scenario: user add admin with blank name
@@ -20,10 +20,10 @@
         | admin    | admin123 |
       And user get token
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
-        | name | role         | username | password |
-        |      | admin berita | admin    | admin123 |
+        | role  | username   | password       |
+        | Admin | randomName | randomPassword |
       Then User verify status code is 400
-      Then User verify response body should contain "data cannot entry"
+      Then User verify response body should contain "Name is required"
 
     @Admin @Authentication @Add @Negative
     Scenario: user add admin with blank role
@@ -32,10 +32,10 @@
         | admin    | admin123 |
       And user get token
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
-        | name | role  | username | password |
-        | eka  |       | admin    | admin123 |
+        | name       | username   | password       |
+        | randomName | randomName | randomPassword |
       Then User verify status code is 400
-      Then User verify response body should contain "data cannot entry"
+      Then User verify response body should contain "Role is required"
 
     @Admin @Authentication @Add @Negative
     Scenario: user add admin with blank username
@@ -44,10 +44,10 @@
         | admin    | admin123 |
       And user get token
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
-        | name | role         | username | password |
-        | eka  | admin berita |          | admin123 |
+        | name       | role  | password       |
+        | randomName | Admin | randomPassword |
       Then User verify status code is 400
-      Then User verify response body should contain "data cannot entry"
+      Then User verify response body should contain "Username is required"
 
     @Admin @Authentication @Add @Negative
     Scenario: user add admin with blank password
@@ -56,8 +56,20 @@
         | admin    | admin123 |
       And user get token
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
-        | name | role         | username | password |
-        | eka  | admin berita | admin    |          |
+        | name       | role  | username   |
+        | randomName | Admin | randomName |
       Then User verify status code is 400
-      Then User verify response body should contain "data cannot entry"
+      Then User verify response body should contain "Password is required"
+
+    @Admin @Authentication @Add @Negative
+    Scenario: user add admin with blank password
+      Given User call an api "/login/admin" with method "POST" with payload below
+        | username | password |
+        | admin    | admin123 |
+      And user get token
+      And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
+        | name       | role  | username | password       |
+        | randomName | Admin | admin    | randomPassword |
+      Then User verify status code is 400
+      Then User verify response body should contain "username already used"
 
