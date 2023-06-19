@@ -1,5 +1,5 @@
 @GetNews
-  Feature: Check get news
+  Feature: Get News
 
     @Admin @News @Get @Positive
     Scenario: Get news with valid data

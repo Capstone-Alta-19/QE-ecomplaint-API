@@ -1,5 +1,5 @@
 @AddNews
-  Feature: Check add news
+  Feature: Add News
 
     @Admin @News @Add @Positive
     Scenario: Add new news with valid data

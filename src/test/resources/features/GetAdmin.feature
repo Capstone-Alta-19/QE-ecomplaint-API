@@ -1,5 +1,5 @@
 @GetAdmin
-  Feature: Check get admin
+  Feature: Get Admin
 
     @Admin @Authentication @Get @Positive
     Scenario: Get admin with valid data

@@ -152,10 +152,11 @@ public class StepDefinitions {
                 case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
                 case "randomNewsName" -> bodyRequest.put(key, faker.lorem().sentence(4));
-                case "randomCategoryID" -> bodyRequest.put(key, 1);
+                case "randomCategoryID" -> bodyRequest.put(key, faker.number().numberBetween(1, 5));
                 case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence(10));
                 case "randomPhone" -> bodyRequest.put(key, faker.phoneNumber().phoneNumber());
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
+                case "isTrue" -> bodyRequest.put(key, true);
                 case "randomProductId" -> bodyRequest.put(key, 14394);
                 case "randomQuantity" -> bodyRequest.put(key, faker.number().randomDigitNotZero());
                 case "randomRating" -> bodyRequest.put(key, faker.number().numberBetween(1, 5));
@@ -177,7 +178,7 @@ public class StepDefinitions {
                             .body(arrayRequest).log().all()));
             case "PUT" -> actor.attemptsTo(Put.to(path)
                     .with(request -> request.header("Authorization", "Bearer " + user.getToken())
-                            .body(arrayRequest).log().all()));
+                            .body(bodyRequest).log().all()));
             case "DELETE" -> actor.attemptsTo(Delete.from(path));
             default -> throw new IllegalStateException("Unknown method");
         }

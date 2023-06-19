@@ -1,5 +1,5 @@
 @DeleteNews
-  Feature: Check delete news
+  Feature: Delete News
 
     @Admin @News @Delete @Positive
     Scenario: Delete news with valid data

@@ -1,5 +1,5 @@
 @AddAdmin
-  Feature: Check add admin
+  Feature: Add Admin
 
     @Admin @Authentication @Add @Positive
     Scenario: User can add admin with valid data

@@ -1,11 +1,11 @@
 @LoginUser
-  Feature: Check user login
+  Feature: Login User
 
     @User @Authentication @Login @Positive
     Scenario: User login with valid data
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password |
-        | halim             | 12345678 |
+        | username_or_email | password  |
+        | halim             | 087654321 |
       Then User verify status code is 200
       Then User verify "token" is exist
       Then User verify response body should contain "success login"

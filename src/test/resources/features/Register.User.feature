@@ -1,5 +1,5 @@
 @RegisterUser
-  Feature: Check user register
+  Feature: Register User
 
     @User @Authentication @Register @Positive
     Scenario: User register with valid data
@@ -33,6 +33,14 @@
         | randomName | randomEmail | 2001-02-08 | 12345678 | 12345678         |
       Then User verify status code is 400
       Then User verify response body should contain "Phone is required"
+
+    @User @Authentication @Register @Negative
+    Scenario: User register with invalid data blank birth date
+      Given User call an api "/register/user" with method "POST" with payload below
+        | username   | email       | phone        | password | confirm_password |
+        | randomName | randomEmail | 082122567830 | 12345678 | 12345678         |
+      Then User verify status code is 200
+      Then User verify response body should contain "success create new user"
 
     @User @Authentication @Register @Negative
     Scenario: User register with invalid data blank password

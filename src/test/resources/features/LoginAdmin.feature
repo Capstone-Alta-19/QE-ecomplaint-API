@@ -1,5 +1,5 @@
 @LoginAdmin
-  Feature: Check admin login
+  Feature: Login Admin
 
     @Admin @Authentication @Login @Positive
     Scenario: Admin login with valid data
