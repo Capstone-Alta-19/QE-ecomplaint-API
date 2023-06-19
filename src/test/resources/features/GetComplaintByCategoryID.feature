@@ -2,7 +2,7 @@
   Feature: Get complaint by Category ID
 
     @Admin @Complaint @Get @Positive
-    Scenario: Get admin complaint by id with valid data
+    Scenario: Get complaint by category id with valid data
       Given User call an api "/login/user" with method "POST" with payload below
         | username_or_email | password  |
         | halim             | 087654321 |
