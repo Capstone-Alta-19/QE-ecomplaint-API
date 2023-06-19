@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "complaint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "photo_url": {
+          "type": "string"
+        },
+        "video_url": {
+          "type": "null"
+        },
+        "is_public": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "full_name",
+        "type",
+        "category",
+        "description",
+        "photo_url",
+        "video_url",
+        "is_public",
+        "created_at"
+      ]
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "complaint",
+    "message"
+  ]
+}

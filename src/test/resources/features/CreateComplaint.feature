@@ -95,4 +95,4 @@
         | type       | category_id      | photo_url                 | video_url                 | description       |
         | Aspiration | randomCategoryID | https://picsum.photos/200 | http://y2u.be/UT5F9AXjwhg | randomDescription |
       Then User verify status code is 400
-      Then User verify response body should contain "isPublic is required"
+      Then User verify response body should contain "IsPublic is required"

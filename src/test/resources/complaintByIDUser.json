@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "complaint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "photo_profile": {
+          "type": "null"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "photo_url": {
+          "type": "string"
+        },
+        "video_url": {
+          "type": "null"
+        },
+        "is_public": {
+          "type": "boolean"
+        },
+        "feedback": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "photo_profile": {
+                "type": "null"
+              },
+              "full_name": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "created_at": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "photo_profile",
+              "full_name",
+              "username",
+              "description",
+              "created_at"
+            ]
+          }
+        },
+        "user_profile": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "id",
+        "photo_profile",
+        "full_name",
+        "username",
+        "description",
+        "photo_url",
+        "video_url",
+        "is_public",
+        "feedback",
+        "created_at",
+        "comments",
+        "user_profile"
+      ]
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "complaint",
+    "message"
+  ]
+}
