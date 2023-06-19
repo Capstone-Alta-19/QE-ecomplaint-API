@@ -61,10 +61,9 @@ public class StepDefinitions {
                 case "randomFullname" -> bodyRequest.put(key, faker.name().fullName());
                 case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
-                case "randomNewsName" -> bodyRequest.put(key, faker.lorem().words());
-                case "randomCategoryID" -> bodyRequest.put(key, faker.number().digits(2));
-                case "randomNewsDescription" -> bodyRequest.put(key, faker.lorem().paragraphs(3));
-                case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence());
+                case "randomNewsName" -> bodyRequest.put(key, faker.lorem().sentence(4));
+                case "randomCategoryID" -> bodyRequest.put(key, 1);
+                case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence(10));
                 case "randomPhone" -> bodyRequest.put(key, faker.phoneNumber().phoneNumber());
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
                 case "randomProductId" -> bodyRequest.put(key, 14394);
@@ -153,7 +152,7 @@ public class StepDefinitions {
                 case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
                 case "randomNewsName" -> bodyRequest.put(key, faker.lorem().sentence(4));
-                case "randomCategoryID" -> bodyRequest.put(key, faker.number().digits(2));
+                case "randomCategoryID" -> bodyRequest.put(key, 1);
                 case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence(10));
                 case "randomPhone" -> bodyRequest.put(key, faker.phoneNumber().phoneNumber());
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
