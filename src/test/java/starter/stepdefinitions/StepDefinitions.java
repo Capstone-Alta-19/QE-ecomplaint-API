@@ -62,13 +62,14 @@ public class StepDefinitions {
                 case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
                 case "randomNewsName" -> bodyRequest.put(key, faker.lorem().sentence(4));
-                case "randomCategoryID" -> bodyRequest.put(key, 1);
+                case "randomCategoryID" -> bodyRequest.put(key, faker.number().numberBetween(1, 5));
                 case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence(10));
                 case "randomPhone" -> bodyRequest.put(key, faker.phoneNumber().phoneNumber());
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
+                case "isTrue" -> bodyRequest.put(key, true);
+                case "isFalse" -> bodyRequest.put(key, false);
                 case "randomProductId" -> bodyRequest.put(key, 14394);
                 case "randomQuantity" -> bodyRequest.put(key, faker.number().randomDigitNotZero());
-                case "randomRating" -> bodyRequest.put(key, faker.number().numberBetween(1, 5));
                 case "userEmail" -> bodyRequest.put(key, user.getEmail());
                 case "userPassword" -> bodyRequest.put(key, user.getPassword());
                 default -> bodyRequest.put(key, valueList.get(key));
@@ -157,9 +158,9 @@ public class StepDefinitions {
                 case "randomPhone" -> bodyRequest.put(key, faker.phoneNumber().phoneNumber());
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
                 case "isTrue" -> bodyRequest.put(key, true);
+                case "isFalse" -> bodyRequest.put(key, false);
                 case "randomProductId" -> bodyRequest.put(key, 14394);
                 case "randomQuantity" -> bodyRequest.put(key, faker.number().randomDigitNotZero());
-                case "randomRating" -> bodyRequest.put(key, faker.number().numberBetween(1, 5));
                 case "userEmail" -> bodyRequest.put(key, user.getEmail());
                 case "userPassword" -> bodyRequest.put(key, user.getPassword());
                 default -> bodyRequest.put(key, valueList.get(key));
