@@ -6,7 +6,7 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
+      And user get token admin
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
         | name       | role  | username   | password       |
         | randomName | Admin | randomName | randomPassword |
@@ -18,7 +18,7 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
+      And user get token admin
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
         | role  | username   | password       |
         | Admin | randomName | randomPassword |
@@ -30,7 +30,7 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
+      And user get token admin
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
         | name       | username   | password       |
         | randomName | randomName | randomPassword |
@@ -42,7 +42,7 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
+      And user get token admin
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
         | name       | role  | password       |
         | randomName | Admin | randomPassword |
@@ -54,7 +54,7 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
+      And user get token admin
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
         | name       | role  | username   |
         | randomName | Admin | randomName |
@@ -66,7 +66,7 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
+      And user get token admin
       And User call an api "/dashboard/admin" with method "POST" with payload below and specific token
         | name       | role  | username | password       |
         | randomName | Admin | admin    | randomPassword |

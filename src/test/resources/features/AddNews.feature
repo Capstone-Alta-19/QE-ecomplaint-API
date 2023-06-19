@@ -6,10 +6,10 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
-      And User call an api "/admin/news" with method "POST" with payload below and specific token
+      And user get token admin
+      And User call an api "/dashboard/news" with method "POST" with payload below and specific token
         | news_name       | description           | category_id      |
-        | randomNewsName  | randomNewsDescription | randomCategoryID |
+        | randomNewsName  | randomDescription | 1                |
       Then User verify status code is 200
       Then User verify response is match with json schema "newNews.json"
 
@@ -18,10 +18,10 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
-      And User call an api "/admin/news" with method "POST" with payload below and specific token
+      And user get token admin
+      And User call an api "/dashboard/news" with method "POST" with payload below and specific token
         | description           | category_id      |
-        | randomNewsDescription | randomCategoryID |
+        | randomDescription | 2                |
       Then User verify status code is 401
 
     @Admin @News @Add @Negative
@@ -29,10 +29,10 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
-      And User call an api "/admin/news" with method "POST" with payload below and specific token
+      And user get token admin
+      And User call an api "/dashboard/news" with method "POST" with payload below and specific token
         | news_name       | category_id      |
-        | randomNewsName  | randomCategoryID |
+        | randomNewsName  | 3                |
       Then User verify status code is 401
 
     @Admin @News @Add @Negative
@@ -40,8 +40,8 @@
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
-      And user get token
-      And User call an api "/admin/news" with method "POST" with payload below and specific token
+      And user get token admin
+      And User call an api "/dashboard/news" with method "POST" with payload below and specific token
         | news_name       | description           |
-        | randomNewsName  | randomNewsDescription |
+        | randomNewsName  | randomDescription |
       Then User verify status code is 401

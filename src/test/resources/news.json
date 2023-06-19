@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "News": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "integer"
+          },
+          "CreatedAt": {
+            "type": "string"
+          },
+          "UpdatedAt": {
+            "type": "string"
+          },
+          "DeletedAt": {
+            "type": "null"
+          },
+          "news_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category_id": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "ID",
+          "CreatedAt",
+          "UpdatedAt",
+          "DeletedAt",
+          "news_name",
+          "description",
+          "category_id"
+        ]
+      }
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "News",
+    "status"
+  ]
+}

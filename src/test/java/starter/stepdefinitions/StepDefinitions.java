@@ -79,7 +79,7 @@ public class StepDefinitions {
         switch (method) {
             case "GET" -> actor.attemptsTo(Get.resource(path));
             case "POST" -> actor.attemptsTo(Post.to(path).with(request -> request.body(bodyRequest).log().all()));
-            case "PUT" -> actor.attemptsTo(Put.to(path).with(request -> request.body(bodyRequest)));
+            case "PUT" -> actor.attemptsTo(Put.to(path).with(request -> request.body(bodyRequest).log().all()));
             case "DELETE" -> actor.attemptsTo(Delete.from(path));
             default -> throw new IllegalStateException("Unknown method");
         }
@@ -109,10 +109,16 @@ public class StepDefinitions {
         response.then().body(matchesJsonSchemaInClasspath(schema));
     }
 
-    @And("{actor} get token")
-    public void userGetToken(Actor actor) {
+    @And("{actor} get token admin")
+    public void userGetTokenAdmin(Actor actor) {
         Response response = SerenityRest.lastResponse();
         user.setToken(response.path("admin.token"));
+    }
+
+    @And("{actor} get token user")
+    public void userGetTokenUser(Actor actor) {
+        Response response = SerenityRest.lastResponse();
+        user.setToken(response.path("user.token"));
     }
 
     @And("{actor} call an api {string} with method {string} with payload below and specific token")
@@ -146,10 +152,10 @@ public class StepDefinitions {
                 case "randomFullname" -> bodyRequest.put(key, faker.name().fullName());
                 case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
-                case "randomNewsName" -> bodyRequest.put(key, faker.lorem().words());
+                case "randomNewsName" -> bodyRequest.put(key, faker.lorem().sentence(4));
                 case "randomCategoryID" -> bodyRequest.put(key, faker.number().digits(2));
-                case "randomNewsDescription" -> bodyRequest.put(key, faker.lorem().paragraphs(3));
-                case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence());
+                case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence(10));
+                case "randomPhone" -> bodyRequest.put(key, faker.phoneNumber().phoneNumber());
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
                 case "randomProductId" -> bodyRequest.put(key, 14394);
                 case "randomQuantity" -> bodyRequest.put(key, faker.number().randomDigitNotZero());
@@ -170,7 +176,22 @@ public class StepDefinitions {
             case "POSTarray" -> actor.attemptsTo(Post.to(path)
                     .with(request -> request.header("Authorization", "Bearer " + user.getToken())
                             .body(arrayRequest).log().all()));
-            case "PUT" -> actor.attemptsTo(Put.to(path).with(request -> request.body(bodyRequest)));
+            case "PUT" -> actor.attemptsTo(Put.to(path)
+                    .with(request -> request.header("Authorization", "Bearer " + user.getToken())
+                            .body(arrayRequest).log().all()));
+            case "DELETE" -> actor.attemptsTo(Delete.from(path));
+            default -> throw new IllegalStateException("Unknown method");
+        }
+    }
+    @Given("{actor} call an API {string} with method {string} and specific token")
+    public void userCallAnAPIWithMethodAndSpecificToken(Actor actor, String path, String method) {
+        actor.whoCan(CallAnApi.at(baseUrl));
+
+        switch (method) {
+            case "GET" -> actor.attemptsTo(Get.resource(path)
+                    .with(request -> request.header("Authorization", "Bearer " + user.getToken())));
+            case "POST" -> actor.attemptsTo(Post.to(path));
+            case "PUT" -> actor.attemptsTo(Put.to(path));
             case "DELETE" -> actor.attemptsTo(Delete.from(path));
             default -> throw new IllegalStateException("Unknown method");
         }

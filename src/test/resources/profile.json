@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "photo_profile": {
+          "type": "null"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "laporan": {
+          "type": "integer"
+        },
+        "pending": {
+          "type": "integer"
+        },
+        "proccess": {
+          "type": "integer"
+        },
+        "resolved": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "photo_profile",
+        "full_name",
+        "laporan",
+        "pending",
+        "proccess",
+        "resolved"
+      ]
+    }
+  },
+  "required": [
+    "message",
+    "user"
+  ]
+}
