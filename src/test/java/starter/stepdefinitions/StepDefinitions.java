@@ -65,6 +65,7 @@ public class StepDefinitions {
                 case "randomCategoryID" -> bodyRequest.put(key, faker.number().digits(2));
                 case "randomNewsDescription" -> bodyRequest.put(key, faker.lorem().paragraphs(3));
                 case "randomDescription" -> bodyRequest.put(key, faker.lorem().sentence());
+                case "randomPhone" -> bodyRequest.put(key, faker.phoneNumber().phoneNumber());
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
                 case "randomProductId" -> bodyRequest.put(key, 14394);
                 case "randomQuantity" -> bodyRequest.put(key, faker.number().randomDigitNotZero());

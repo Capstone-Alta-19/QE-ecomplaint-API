@@ -8,6 +8,7 @@
         | admin    | admin123 |
       Then User verify status code is 200
       Then User verify "token" is exist
+      Then User verify response body should contain "Success Login"
 
     @Admin @Authentication @Login @Negative
     Scenario: Admin login with invalid data wrong password

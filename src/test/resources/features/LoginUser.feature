@@ -8,6 +8,7 @@
         | halim             | 12345678 |
       Then User verify status code is 200
       Then User verify "token" is exist
+      Then User verify response body should contain "success login"
 
     @User @Authentication @Login @Negative
     Scenario: User login with invalid data wrong password

@@ -62,7 +62,7 @@
       Then User verify response body should contain "Password is required"
 
     @Admin @Authentication @Add @Negative
-    Scenario: User add admin with taken username
+    Scenario: User add admin with invalid data taken username
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
         | admin    | admin123 |
