@@ -32,7 +32,10 @@
             ]
           },
           "video_url": {
-            "type": "null"
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "is_public": {
             "type": "boolean"
