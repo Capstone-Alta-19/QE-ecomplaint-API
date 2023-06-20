@@ -193,7 +193,8 @@ public class StepDefinitions {
         switch (method) {
             case "GET" -> actor.attemptsTo(Get.resource(path)
                     .with(request -> request.header("Authorization", "Bearer " + user.getToken())));
-            case "POST" -> actor.attemptsTo(Post.to(path));
+            case "POST" -> actor.attemptsTo(Post.to(path)
+                    .with(request -> request.header("Authorization", "Bearer " + user.getToken())));
             case "PUT" -> actor.attemptsTo(Put.to(path));
             case "DELETE" -> actor.attemptsTo(Delete.from(path)
                     .with(request -> request.header("Authorization", "Bearer " + user.getToken())));

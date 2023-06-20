@@ -23,10 +23,16 @@
         "news_name": {
           "type": "string"
         },
+        "photo_url": {
+          "type": "string"
+        },
         "description": {
           "type": "string"
         },
         "category_id": {
+          "type": "integer"
+        },
+        "admin_id": {
           "type": "integer"
         }
       },
@@ -36,8 +42,10 @@
         "UpdatedAt",
         "DeletedAt",
         "news_name",
+        "photo_url",
         "description",
-        "category_id"
+        "category_id",
+        "admin_id"
       ]
     }
   },

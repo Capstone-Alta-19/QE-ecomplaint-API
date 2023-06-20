@@ -8,8 +8,8 @@
         | asmar    | asmar123 |
       And user get token admin
       And User call an api "/dashboard/news" with method "POST" with payload below and specific token
-        | news_name       | description       | category_id      |
-        | randomNewsName  | randomDescription | randomCategoryID |
+        | news_name       | photo_url                 |description       | category_id      |
+        | randomNewsName  | https://picsum.photos/200 |randomDescription | randomCategoryID |
       Then User verify status code is 201
       Then User verify response is match with json schema "newNews.json"
 

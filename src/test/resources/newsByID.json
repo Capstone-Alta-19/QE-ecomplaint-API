@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "news": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "news_name": {
+          "type": "string"
+        },
+        "photo_url": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "admin": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "news_list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "news_name": {
+                "type": "string"
+              },
+              "photo_url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "news_name",
+              "photo_url"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "news_name",
+        "photo_url",
+        "description",
+        "admin",
+        "category",
+        "created_at",
+        "news_list"
+      ]
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "news",
+    "status"
+  ]
+}
