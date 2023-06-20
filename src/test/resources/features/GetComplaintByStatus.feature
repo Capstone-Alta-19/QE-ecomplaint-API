@@ -1,5 +1,5 @@
 @GetComplaintByStatus
-  Feature: Get complaint by status
+  Feature: Get Complaint by Status
 
     @User @Complaint @Get @Positive
     Scenario: Get complaint by status with valid data

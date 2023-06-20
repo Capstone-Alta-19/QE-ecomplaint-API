@@ -1,5 +1,5 @@
 @GetComplaintByCategoryID
-  Feature: Get complaint by Category ID
+  Feature: Get Complaint by Category ID
 
     @Admin @Complaint @Get @Positive
     Scenario: Get complaint by category id with valid data

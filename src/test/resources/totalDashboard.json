@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "total": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "complaint": {
+          "type": "integer"
+        },
+        "aspiration": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "total",
+        "complaint",
+        "aspiration"
+      ]
+    }
+  },
+  "required": [
+    "message",
+    "total"
+  ]
+}

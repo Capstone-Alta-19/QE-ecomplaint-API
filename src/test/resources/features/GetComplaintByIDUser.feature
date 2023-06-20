@@ -1,5 +1,5 @@
 @GetComplaintByIDUser
-  Feature: Get complaint by ID user
+  Feature: Get Complaint by ID User
 
     @User @Complaint @Get @Positive
     Scenario: Get user complaint by id with valid data
