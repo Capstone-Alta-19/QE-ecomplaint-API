@@ -1,20 +1,20 @@
 @UpdateAdmin
   Feature: Update Admin
 
-  @Admin @Authentication @Update @Positive
-  Scenario: Update admin with valid data
-    Given User call an api "/login/admin" with method "POST" with payload below
-      | username | password |
-      | asmar    | asmar123 |
-    And user get token admin
-    And User call an api "/dashboard/admin" with method "PUT" with payload below and specific token
-      | old_password | new_password | confirm_password |
-      | asmar123     | 12345678     | 12345678         |
-    Then User verify status code is 200
-    Then User verify response body should contain "Success Updated Admin"
-    And User call an api "/dashboard/admin" with method "PUT" with payload below and specific token
-      | old_password | new_password | confirm_password |
-      | 12345678     | asmar123     | asmar123         |
+    @Admin @Authentication @Update @Positive
+    Scenario: Update admin with valid data
+      Given User call an api "/login/admin" with method "POST" with payload below
+        | username | password |
+        | asmar    | asmar123 |
+      And user get token admin
+      And User call an api "/dashboard/admin" with method "PUT" with payload below and specific token
+        | old_password | new_password | confirm_password |
+        | asmar123     | 12345678     | 12345678         |
+      Then User verify status code is 200
+      Then User verify response body should contain "Success Updated Admin"
+      And User call an api "/dashboard/admin" with method "PUT" with payload below and specific token
+        | old_password | new_password | confirm_password |
+        | 12345678     | asmar123     | asmar123         |
 
     @Admin @Authentication @Update @Negative
     Scenario: Update admin with invalid data blank old password

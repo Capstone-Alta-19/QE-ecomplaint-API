@@ -68,6 +68,7 @@ public class StepDefinitions {
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
                 case "isTrue" -> bodyRequest.put(key, true);
                 case "isFalse" -> bodyRequest.put(key, false);
+                case "isNull" -> bodyRequest.put(key, null);
                 case "randomProductId" -> bodyRequest.put(key, 14394);
                 case "randomQuantity" -> bodyRequest.put(key, faker.number().randomDigitNotZero());
                 case "userEmail" -> bodyRequest.put(key, user.getEmail());
@@ -159,6 +160,7 @@ public class StepDefinitions {
                 case "randomProductPrice" -> bodyRequest.put(key, Math.round(Float.parseFloat(faker.commerce().price())));
                 case "isTrue" -> bodyRequest.put(key, true);
                 case "isFalse" -> bodyRequest.put(key, false);
+                case "isNull" -> bodyRequest.put(key, null);
                 case "randomProductId" -> bodyRequest.put(key, 14394);
                 case "randomQuantity" -> bodyRequest.put(key, faker.number().randomDigitNotZero());
                 case "userEmail" -> bodyRequest.put(key, user.getEmail());
@@ -193,7 +195,8 @@ public class StepDefinitions {
                     .with(request -> request.header("Authorization", "Bearer " + user.getToken())));
             case "POST" -> actor.attemptsTo(Post.to(path));
             case "PUT" -> actor.attemptsTo(Put.to(path));
-            case "DELETE" -> actor.attemptsTo(Delete.from(path));
+            case "DELETE" -> actor.attemptsTo(Delete.from(path)
+                    .with(request -> request.header("Authorization", "Bearer " + user.getToken())));
             default -> throw new IllegalStateException("Unknown method");
         }
     }

@@ -1,5 +1,5 @@
 @UpdatePassword
-  Feature: Password Update
+  Feature: Update Password
 
     @User @Update @Password @Positive
     Scenario: User update password with valid data
