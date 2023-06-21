@@ -4,8 +4,8 @@
     @User @Create @Complaint @Positive
     Scenario: Create complaint with valid data true
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an api "/complaintz/complaint" with method "POST" with payload below and specific token
         | type       | category_id      | photo_url                 | video_url                 | description       | is_public |
@@ -16,8 +16,8 @@
     @User @Create @Complaint @Positive
     Scenario: Create complaint with valid data false
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an api "/complaintz/complaint" with method "POST" with payload below and specific token
         | type       | category_id      | photo_url                 | video_url                 | description       | is_public |
@@ -28,8 +28,8 @@
     @User @Create @Complaint @Negative
     Scenario: Create complaint with invalid data blank type
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an api "/complaintz/complaint" with method "POST" with payload below and specific token
         | category_id      | photo_url                 | video_url                 | description       | is_public |
@@ -40,8 +40,8 @@
     @User @Create @Complaint @Negative
     Scenario: Create complaint with invalid data blank category id
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an api "/complaintz/complaint" with method "POST" with payload below and specific token
         | type       | photo_url                 | video_url                 | description       | is_public |
@@ -52,8 +52,8 @@
     @User @Create @Complaint @Negative
     Scenario: Create complaint with invalid data blank photo url
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an api "/complaintz/complaint" with method "POST" with payload below and specific token
         | type       | category_id      | video_url                 | description       | is_public |
@@ -64,8 +64,8 @@
     @User @Create @Complaint @Negative
     Scenario: Create complaint with invalid data blank video url
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an api "/complaintz/complaint" with method "POST" with payload below and specific token
         | type       | category_id      | photo_url                 | description       | is_public |
@@ -76,8 +76,8 @@
     @User @Create @Complaint @Negative
     Scenario: Create complaint with invalid data blank description
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an api "/complaintz/complaint" with method "POST" with payload below and specific token
         | type       | category_id      | photo_url                 | video_url                 | is_public |
@@ -88,8 +88,8 @@
     @User @Create @Complaint @Negative
     Scenario: Create complaint with invalid data blank is public
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an api "/complaintz/complaint" with method "POST" with payload below and specific token
         | type       | category_id      | photo_url                 | video_url                 | description       |

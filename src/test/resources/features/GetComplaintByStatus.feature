@@ -4,8 +4,8 @@
     @User @Complaint @Get @Positive
     Scenario: Get complaint by status with valid data
       Given User call an api "/login/user" with method "POST" with payload below
-        | username_or_email | password  |
-        | halim             | 087654321 |
+        | username_or_email | password |
+        | halim             | 12345678 |
       And user get token user
       And User call an API "/complaintz/complaint?status=All" with method "GET" and specific token
       Then User verify status code is 200

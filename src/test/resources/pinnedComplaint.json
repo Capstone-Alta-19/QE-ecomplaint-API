@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "complaints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "photo_profile": {
+            "type": "null"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "photo_url": {
+            "type": "string"
+          },
+          "video_url": {
+            "type": "null"
+          },
+          "feedback": {
+            "type": "null"
+          },
+          "likes_count": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "photo_profile",
+          "full_name",
+          "username",
+          "description",
+          "photo_url",
+          "video_url",
+          "feedback",
+          "likes_count",
+          "created_at"
+        ]
+      }
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "complaints",
+    "message"
+  ]
+}

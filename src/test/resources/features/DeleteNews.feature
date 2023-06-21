@@ -5,7 +5,7 @@
     Scenario: Delete news with valid data
       Given User call an api "/login/admin" with method "POST" with payload below
         | username | password |
-        | admin    | admin123 |
+        | asmar    | asmar123 |
       And user get token admin
       And User call an API "/dashboard/news/17" with method "DELETE" and specific token
       Then User verify status code is 200
