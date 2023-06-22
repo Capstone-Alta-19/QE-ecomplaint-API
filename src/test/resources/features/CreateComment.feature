@@ -7,7 +7,7 @@
         | username_or_email | password |
         | halim             | 12345678 |
       And user get token user
-      And User call an api "/complaintz/complaint/6/comment" with method "POST" with payload below and specific token
+      And User call an api "/complaintz/complaint/1/comment" with method "POST" with payload below and specific token
         | description       |
         | randomDescription |
       Then User verify status code is 200
@@ -19,7 +19,7 @@
         | username_or_email | password |
         | halim             | 12345678 |
       And user get token user
-      And User call an api "/complaintz/complaint/6/comment" with method "POST" with payload below and specific token
+      And User call an api "/complaintz/complaint/1/comment" with method "POST" with payload below and specific token
         | description       |
         | isNull            |
       Then User verify status code is 400

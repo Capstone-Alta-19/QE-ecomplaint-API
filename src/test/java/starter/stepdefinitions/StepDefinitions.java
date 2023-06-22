@@ -58,7 +58,7 @@ public class StepDefinitions {
                     bodyRequest.put(key, randomPassword);
                     user.setPassword(randomPassword);
                 }
-                case "randomFullname" -> bodyRequest.put(key, faker.name().fullName());
+                case "randomFullName" -> bodyRequest.put(key, faker.name().fullName());
                 case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
                 case "randomNewsName" -> bodyRequest.put(key, faker.lorem().sentence(4));
@@ -150,7 +150,7 @@ public class StepDefinitions {
                     bodyRequest.put(key, randomPassword);
                     user.setPassword(randomPassword);
                 }
-                case "randomFullname" -> bodyRequest.put(key, faker.name().fullName());
+                case "randomFullName" -> bodyRequest.put(key, faker.name().fullName());
                 case "randomName" -> bodyRequest.put(key, faker.name().firstName());
                 case "randomProductName" -> bodyRequest.put(key, faker.commerce().productName());
                 case "randomNewsName" -> bodyRequest.put(key, faker.lorem().sentence(4));
