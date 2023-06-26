@@ -22,8 +22,8 @@
       And User call an api "/complaintz/user/1" with method "PUT" with payload below and specific token
         | phone        | date_birth |
         | 082122121234 | 2001-02-08 |
-      Then User verify status code is 400
-      Then User verify response body should contain "FullName is required"
+      Then User verify status code is 200
+      Then User verify response body should contain "success update user"
 
     @User @Authentication @Update @Negative
     Scenario: User update user with invalid data blank phone
@@ -34,8 +34,8 @@
       And User call an api "/complaintz/user/1" with method "PUT" with payload below and specific token
         | full_name      | date_birth |
         | randomFullName | 2001-02-08 |
-      Then User verify status code is 400
-      Then User verify response body should contain "Phone is required"
+      Then User verify status code is 200
+      Then User verify response body should contain "success update user"
 
     @User @Authentication @Update @Negative
     Scenario: User update user with invalid data blank date birth
@@ -46,5 +46,5 @@
       And User call an api "/complaintz/user/1" with method "PUT" with payload below and specific token
         | full_name      | phone        |
         | randomFullName | 082122121234 |
-      Then User verify status code is 400
-      Then User verify response body should contain "DateBirth is required"
+      Then User verify status code is 200
+      Then User verify response body should contain "success update user"

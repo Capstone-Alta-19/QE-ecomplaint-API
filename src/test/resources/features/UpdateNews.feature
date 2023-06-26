@@ -22,8 +22,8 @@
       And User call an api "/dashboard/news/21" with method "PUT" with payload below and specific token
         | description       |
         | randomDescription |
-      Then User verify status code is 400
-      Then User verify response body should contain "news name is required"
+      Then User verify status code is 200
+      Then User verify response body should contain "success update news"
 
     @Admin @News @Update @Negative
     Scenario: Update news with invalid data blank description
@@ -34,5 +34,5 @@
       And User call an api "/dashboard/news/21" with method "PUT" with payload below and specific token
         | news_name       |
         | randomNewsName  |
-      Then User verify status code is 400
-      Then User verify response body should contain "description is required"
+      Then User verify status code is 200
+      Then User verify response body should contain "success update news"

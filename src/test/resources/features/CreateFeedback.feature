@@ -7,7 +7,7 @@
         | username | password |
         | asmar    | asmar123 |
       And user get token admin
-      And User call an api "/dashboard/complaint/6" with method "POST" with payload below and specific token
+      And User call an api "/dashboard/complaint/99" with method "POST" with payload below and specific token
         | description       |
         | randomDescription |
       Then User verify status code is 200
@@ -19,7 +19,7 @@
         | username | password |
         | asmar    | asmar123 |
       And user get token admin
-      And User call an api "/dashboard/complaint/6" with method "POST" with payload below and specific token
+      And User call an api "/dashboard/complaint/99" with method "POST" with payload below and specific token
         | description       |
         | isNull            |
       Then User verify status code is 400

@@ -30,7 +30,7 @@
           "type": "boolean"
         },
         "feedback": {
-          "type": "string"
+          "type": "null"
         },
         "created_at": {
           "type": "string"

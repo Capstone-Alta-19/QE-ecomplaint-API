@@ -7,7 +7,7 @@
         | username | password |
         | asmar    | asmar123 |
       And user get token admin
-      And User call an api "/dashboard/complaint/6" with method "PUT" with payload below and specific token
+      And User call an api "/dashboard/complaint/99" with method "PUT" with payload below and specific token
         | status   | type      |
         | Proccess | Complaint |
       Then User verify status code is 200
@@ -19,7 +19,7 @@
         | username | password |
         | asmar    | asmar123 |
       And user get token admin
-      And User call an api "/dashboard/complaint/6" with method "PUT" with payload below and specific token
+      And User call an api "/dashboard/complaint/99" with method "PUT" with payload below and specific token
         | status | type      |
         | salah  | Complaint |
       Then User verify status code is 400
@@ -31,7 +31,7 @@
         | username | password |
         | asmar    | asmar123 |
       And user get token admin
-      And User call an api "/dashboard/complaint/6" with method "PUT" with payload below and specific token
+      And User call an api "/dashboard/complaint/99" with method "PUT" with payload below and specific token
         | status   | type      |
         | Proccess | salah     |
       Then User verify status code is 400
@@ -43,7 +43,7 @@
         | username | password |
         | asmar    | asmar123 |
       And user get token admin
-      And User call an api "/dashboard/complaint/6" with method "PUT" with payload below and specific token
+      And User call an api "/dashboard/complaint/99" with method "PUT" with payload below and specific token
         | status   |
         | Proccess |
       Then User verify status code is 400
@@ -55,7 +55,7 @@
         | username | password |
         | asmar    | asmar123 |
       And user get token admin
-      And User call an api "/dashboard/complaint/6" with method "PUT" with payload below and specific token
+      And User call an api "/dashboard/complaint/99" with method "PUT" with payload below and specific token
         | type      |
         | Complaint |
       Then User verify status code is 400
